@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ?font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Assets/css/estilos.css"/>
+    <title>Document</title>
+  </head>
+  <body>
+
+
+
+    
+    <nav class="nav">
+      <!-- logo -->
+      <div class="nav__logo">
+        <i class="fa-brands fa-twitch"></i>
+      </div>
+      <!-- menu -->
+      <ul class="nav__menu-pc">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#canales">Canales</a></li>
+        <li><a href="#descargar">Descargar</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <!-- carrito icono -->
+      <div class="nav__carrito-container">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+    </nav>
+    <!-- ?toggle -->
+    <div class="hamburger-container">
+      <button class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav__menu-mobile">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#canales">Canales</a></li>
+        <li><a href="#">Descargar</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <!-- ?overlay blur -->
+    <div class="overlay"></div>
+    <main>
+      <section class="container hero" id="hero">
+        <!-- content -->
+        <div class="hero__content">
+          <h1>¡Suscribite a tus canales favoritos!</h1>
+          <p class="hero__p">Todo en en un solo paso, fácil y sencillo</p>
+          <a class="btn" href="#canales">Ver Canales</a>
+        </div>
+        <!-- imagen -->
+        <figure class="hero__picture"></figure>
+      </section>
+      <!-- ?canales -->
+      <section class="container canales" id="canales">
+        <!-- botones -->
+        <div class="btns-categories" id="btnsCategories">
+
+          <button class="btn active">Todos</button>
+          
+
+          <button class="btn btn-category" data-category="argentina">
+            Argentina
+          </button>
+          
+          <button class="btn btn-category" data-category="españa">
+            España
+          </button>
+
+        </div>
+        <!-- ?cards -->
+        <div class="cards" id="cards">
+            <!-- <article class="card">
+              <div class="card__img">
+                <img src="imagenes/coscu.png"/>
+              </div>
+              <div class="card__info">
+
+                <div class="card__flex">
+                  <a href="#" class="card__name">
+                    <h2>NAME</h2>
+                  </a>
+                  <span class="card__edad">22 años</span>
+                </div>
+
+                <div class="card__flex">
+                  <span class="card__followers">+15k seguidores</span>
+                  <span class="card__price">$4,99</span>
+                </div>
+
+                <button class="btn btnSuscriber">
+                  <i class="fa-regular fa-star"></i>
+                  Suscribirse
+                </button>
+              </div>
+           
+            </article> -->
+        </div>
+        <!-- ?ver más -->
+        <button class="btn btnMore" id="verMas">
+          Ver más
+          <i class="fa-solid fa-caret-down"></i>
+        </button>
+      </section>
+    </main>
+
+
+
+
+
+    
+    <script src="Assets/js/data.js"></script>
+    <script src="Assets/js/channels.js"></script>
+    <script src="Assets/js/index.js" type="module"></script>
+  </body>
+</html>
