@@ -3,21 +3,75 @@ const $btnCategories = d.getElementById('btnsCategories'),
 $cards = d.getElementById('cards'),
 $btnMore = d.getElementById('verMas'),
 $btnPopular = d.getElementById("btnPopular"),
-$btnsCategory = d.querySelectorAll("#btnsCategories .btn")
+$btnsCategory = d.querySelectorAll("#btnsCategories .btn"),
+$cartChannels = d.querySelector(".cart__channels"),
+$btnSuscribe = d.querySelector(".suscribe"),
+$btnDeleteCart = d.querySelector(".deleteCart"),
+$total = d.querySelector(".total")
+
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const saveToLocalStorage = () =>{
+  localStorage.setItem("cart",JSON.stringify(cart))
+}
 
 
+// LOGICA DEL CARRITO
+
+const addChannel = e => {
+  // if(!e.target.classList.contains("suscribe")) return;
+  console.log(e.target.dataset);
+}
+
+const showTotal = () => {
+  return cart.reduce((acc,item) => acc + Number(item.price) * item.quantity ,0) 
+}
+
+const renderChannel = channel => {
+  const {img,name,price,id} = channel;
+  return `
+  <div class="cart__channel">
+  <img src="${img}" alt="${name}">
+  <div class="cart__info">
+    <p class="cart__name">${name}</p>
+    <p class="cart__price">$${price}</p>
+  </div>
+  <div class="cart__btns">
+    <button class="cart-btn down" data-id="${id}">-</button>
+    <span class="cart__quantity">1</span>
+    <button class="cart-btn up" data-id="${id}">+</button>
+  </div>
+ </div>
+  `
+}
+
+const renderCart = e =>{
+  if(!cart.length){
+    $cartChannels.innerHTML = `<p>No hay canales en el carrito.</p>`
+    $total.innerHTML = `$${showTotal().toFixed(2)}`
+    return;
+  }
+  $cartChannels.innerHTML = cart.map(renderChannel).join('')
+  $total.innerHTML = `$${showTotal().toFixed(2)}`
+}
+
+const hideBtnCart = btn => {
+  if(!cart.length){
+    btn.classList.add("disable")
+  }
+}
+
+
+//  FUNCIONES PARA VER MAS
 const checkLimit = () =>{
-   console.log(channelsController.nextPage === channelsController.limitsChannels)
    return channelsController.nextPage === channelsController.limitsChannels
 }
 
 const verMasCanales = (e)=>{
   if(!e.target.classList.contains("btnMore")) return;
  
-
   const {nextPage} = channelsController;
   channelsController.nextPage = nextPage + 1
-
   $cards.innerHTML += channelsController.arrayDividido[nextPage]
   .map(renderCard)
   .join('')
@@ -30,11 +84,11 @@ const verMasCanales = (e)=>{
 
 //  INTERCAMBIAR CLASE ACTIVE ENTRE BTNS
 const changeActiveBtn = (e) => {
-  const categoryList = [...$btnsCategory];
-  categoryList.forEach(btn => {
+   const btnsList = [...$btnsCategory];
+   btnsList.forEach(btn =>{
     btn.classList.remove("active")
     e.target.classList.add("active")
-  })
+   })
 }
 
 
@@ -46,6 +100,7 @@ const renderFilterCards = (e) =>{
 }
 
 const renderFilter = (e)=>{
+  if(!e.target.classList.contains("btn-category")) return
    // cambiar clase active en botones
   changeActiveBtn(e)
   $cards.innerHTML = ''
@@ -63,7 +118,6 @@ const renderFilter = (e)=>{
     $btnMore.classList.add("hidde")
   }
 }
-
 
 // CALLBACK PARA RENDERIZAR CARDS
 const renderCard = card => {
@@ -87,7 +141,8 @@ const renderCard = card => {
         ? 4.99 : 1.99}</span>
       </div>
 
-      <button class="btn btnSuscriber">
+      <button class="btn btnSuscriber" 
+        data-img=${img} data-name="${name}" data-price=${price} data-id="${id}">
         <i class="fa-regular fa-star"></i>
         Suscribirse
       </button>
@@ -104,9 +159,13 @@ const renderCards = ()=>{
 }
 
 
-const init = ()=>{
+const init = () =>{
     renderCards()
     $btnCategories.addEventListener("click",renderFilter)
     $btnMore.addEventListener("click",verMasCanales)
+    document.addEventListener("DOMContentLoaded",renderCart)
+    $btnSuscribe.addEventListener("click",addChannel)
+    hideBtnCart($btnSuscribe)
+    hideBtnCart($btnDeleteCart)
 }
 init()

@@ -90,10 +90,6 @@ const channels = [
 ];
 
 
-
-
-
-
 const divideArray = (size) => {
   let arrayDividido = [];
   for (let i = 0; i < channels.length; i += size) {
