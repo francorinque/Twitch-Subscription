@@ -55,33 +55,35 @@
     <div class="cart-container">
       <h2 class="cart__title">CART</h2>
       <!-- channels -->
-      <div class="cart__channels">
-        <!-- channel -->
-         <!-- <div class="cart__channel">
-          <img src="imagenes/coscu.png" alt="">
-          <div class="cart__info">
-            <p class="cart__name">name</p>
-            <p class="cart__price">$4,99</p>
-          </div>
-          <div class="cart__btns">
-            <button class="cart-btn down" data-id="">-</button>
-            <span class="cart__quantity">1</span>
-            <button class="cart-btn up" data-id="">+</button>
-          </div>
-         </div> -->
-         <!-- termina channel -->
+      <div class="cart__channels">  
+      </div>
+      <!-- termina channels -->
+      <!-- total -->
+      <div class="cart__total">
+        <span class="cart__total-title">TOTAL:</span>
+        <span class="total"></span>
+      </div>
+      <!-- options -->
+      <div class="cart__options">
+        <button class="btn suscribeCart">Suscribirse</button>
+        <button class="btn deleteCart">Vaciar Carrito</button>
+      </div>
+    </div>
+    <!-- ? modal msj -->
+    <div class="modal"></div>
+    <!-- ?modal compra realizada -->
+    <div class="modalCompra-container">
+      <div class="modalCompra">
+        <h3 class="modalCompra__title">¿Finalizar tu suscripción?</h3>
+        <div class="modalCompra__btns">
+          <button class="modalCompra__btn modalCompra-cancel">
+            <i class="fa-solid fa-rectangle-xmark" data-value="false"></i>
+          </button>
+          <button class="modalCompra__btn modalCompra-confirm">
+            <i class="fa-solid fa-square-check" data-value="true"></i>
+          </button>
         </div>
-        <!-- termina channels -->
-        <!-- total -->
-        <div class="cart__total">
-          <span class="cart__total-title">TOTAL:</span>
-          <span class="total"></span>
-        </div>
-        <!-- options -->
-        <div class="cart__options">
-          <button class="btn suscribe">Suscribirse</button>
-          <button class="btn deleteCart">Vaciar Carrito</button>
-        </div>
+      </div>
     </div>
 
 
@@ -115,6 +117,7 @@
         </div>
         <!-- ?cards -->
         <div class="cards" id="cards">
+          
         </div>
         <!-- ?ver más -->
         <button class="btn btnMore" id="verMas">

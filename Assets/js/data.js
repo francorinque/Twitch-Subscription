@@ -8,7 +8,7 @@ const channels = [
     url: "https://www.twitch.tv/coscu",
     popular: true,
     pais: 'argentina',
-    
+    price: 4.99
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const channels = [
     url: "https://www.twitch.tv/tinymedrano",
     popular: false,
     pais: 'argentina',
-    
+    price: 4.99
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const channels = [
     url: "https://www.twitch.tv/davooxeneize",
     popular: false,
     pais: 'argentina',
-    
+    price: 4.99
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const channels = [
     url: "https://www.twitch.tv/elcondu",
     popular: false,
     pais: 'argentina',
-    
+    price: 4.99
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const channels = [
     url: "https://www.twitch.tv/lacobraa",
     popular: false,
     pais: 'argentina',
-    
+    price: 4.99
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ const channels = [
     url: "https://www.twitch.tv/auronplay",
     popular: true,
     pais: 'españa',
-    
+    price: 1.99
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ const channels = [
     url: "https://www.twitch.tv/ibai",
     popular: true,
     pais: 'españa',
-    
+    price: 1.99
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const channels = [
     url: "https://www.twitch.tv/llobeti4",
     popular: false,
     pais: 'españa',
-    
+    price: 1.99
   },
 ];
 
