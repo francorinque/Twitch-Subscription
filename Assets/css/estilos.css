@@ -238,6 +238,9 @@ ul > li > a {
 .nav__carrito-container {
   color: var(--clr-secundario);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav__carrito-container > i:hover {
@@ -375,6 +378,7 @@ ul > li > a {
   background-color: transparent;
   color: var(--clr-light);
   outline: var(--outline);
+  box-shadow: inset 0 0 10px var(--clr-secundario);
 }
 
 .btns-categories .btn-category.active:before,
@@ -397,6 +401,7 @@ ul > li > a {
   padding: 20px;
   overflow: hidden;
   animation: animationCard ease 0.7s;
+  outline: var(--outline);
 }
 
 @keyframes animationCard {
@@ -463,7 +468,7 @@ ul > li > a {
   top: 0;
   right: 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   height: 100vh;
   background-color: var(--clr-gray);
   outline: var(--outline);
@@ -564,12 +569,17 @@ ul > li > a {
   outline: var(--outline);
   background-color: var(--clr-primario);
   transition: var(--transition);
+  position: relative;
+  box-shadow:  0 0 6px var(--clr-secundario);
 }
 
 .cart-btn:hover {
-  transform: scale(0.9);
+  transform: scale(0.97);
   transition: var(--transition);
+  background-color: var(--clr-secundario);
+  color: var(--clr-light);
 }
+
 
 .cart__options{
   margin-top: 30px;
@@ -654,16 +664,16 @@ ul > li > a {
   display: grid;
   place-items: center;
   transition: var(--transition);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
   background-color: rgba(31, 31, 35, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .modalCompra{
   width: 90%;
-  max-width: 400px;
-  height: 400px;
+  max-width: 500px;
+  height: 300px;
+  padding: 10px;
   border-radius: var(--radius);
   background-color: var(--clr-gray);
   color: var(--clr-light);
@@ -685,7 +695,7 @@ ul > li > a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .modalCompra__btn{
@@ -693,6 +703,11 @@ ul > li > a {
   background-color: transparent;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.modalCompra__btn:hover{
+  transform: scale(.9);
+  transition: var(--transition);
 }
 
 .modalCompra-confirm{
@@ -708,3 +723,4 @@ ul > li > a {
   width: 150px;
   margin: 0 auto;
 }
+

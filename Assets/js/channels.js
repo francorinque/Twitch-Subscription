@@ -3,7 +3,6 @@ const $btnCategories = d.getElementById('btnsCategories'),
 $cards = d.getElementById('cards'),
 $btnMore = d.getElementById('verMas'),
 $btnPopular = d.getElementById("btnPopular"),
-$btnsCategory = d.querySelectorAll("#btnsCategories .btn"),
 $cartChannels = d.querySelector(".cart__channels"),
 $btnSuscribeCart = d.querySelector(".suscribeCart"),
 $btnDeleteCart = d.querySelector(".deleteCart"),
@@ -17,6 +16,8 @@ $cart = d.querySelector(".cart-container"),
 $overlay = d.querySelector(".overlay"),
 $modalContent = d.querySelector(".modalCompra")
 
+
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const saveToLocalStorage = () =>{
@@ -24,7 +25,7 @@ const saveToLocalStorage = () =>{
 }
 
 
-// LOGICA DEL CARRITO
+//********* LOGICA DEL CARRITO ************//
 const showModal = msj => {
   $modalSucces.classList.add("showme")
   $modalSucces.innerHTML = `<p>${msj}</p>`
@@ -52,7 +53,12 @@ const existe = channel => {
 const addUnit = channel => {
   cart =  cart.map(canal => {
     return canal.id === channel.id 
-    ? {...canal, quantity: canal.quantity + 1}
+    ? {...canal, quantity: 
+      // si la cantidad es 1, se vuelve 3, si no 6 y vuelve a 1.
+      (canal.quantity === 1) ? 3 
+      : (canal.quantity === 3) ?
+      6 : 1 
+    }
     : canal
   })
 }
@@ -124,13 +130,15 @@ const renderCart = () =>{
 const hideBtnCart = btn => {
   if(!cart.length){
     btn.classList.add("disable")
+    btn.disabled = true
     return
   }
   btn.classList.remove("disable")
+  btn.disabled = false
 }
 
 
-//  FUNCIONES PARA VER MAS
+//********* VER MAS ************//
 const checkLimit = () =>{
    return channelsController.nextPage === channelsController.limitsChannels
 }
@@ -149,18 +157,34 @@ const verMasCanales = (e)=>{
   }
 }
 
+//********* RENDERIZADO DEL FILTRO ************//
 
-//  INTERCAMBIAR CLASE ACTIVE ENTRE BTNS
-const changeActiveBtn = (e) => {
-   const btnsList = [...$btnsCategory];
-   btnsList.forEach(btn =>{
-    btn.classList.remove("active")
-    e.target.classList.add("active")
-   })
+// funcion que reduce los paises y renderiza los botones con sus respectivas
+// categorias.
+const renderBtnsCategories = () => {
+  let btns = channels.reduce((acc,value) => {
+    if(!acc.includes(value.pais)){
+      acc.push(value.pais)
+    }
+    return acc
+  },[])
+
+  $btnCategories.innerHTML += btns
+  .map(btn => {
+    return `<button class="btn btn-category" data-category=${btn}>${btn}</button>`
+  })
+  .join('')
 }
 
+const changeActiveBtn = (e) => {
+  const $btnsCategory = d.querySelectorAll("#btnsCategories .btn")
+  const btnsList = [...$btnsCategory];
+  btnsList.forEach(btn =>{
+   btn.classList.remove("active")
+   e.target.classList.add("active")
+  })
+}
 
-// RENDERIZADO DEL FILTRO
 const renderFilterCards = (e) =>{
   category = e.target.dataset.category;
   let cardsFilter = channels.filter(card => card.pais === category)
@@ -225,11 +249,14 @@ const renderCards = ()=>{
     .join('')
 }
 
-// BORRAR CANALES
+//********* BORRAR CANALES ************//
 const quitarUnidad = channel => {
   cart = cart.map(canal => {
     return canal.id === channel.id 
-    ? {...canal, quantity: canal.quantity - 1}
+      ? {...canal, quantity: (canal.quantity === 6) ?
+      3 : (canal.quantity=== 3) ? 
+      1 : 1
+    }
     : canal
   })
 }
@@ -254,8 +281,7 @@ const btnUpEvent = e => {
   addUnit(canalTarget)
 }
 
-
-// FUNCION QUE CONTROLA EL EVENTO DE LOS BOTONES DEL CANAL UP Y DOWN
+//******* FUNCION QUE CONTROLA EL EVENTO DE LOS BOTONES DEL CANAL UP Y DOWN *******//
 const channelBtnsEvent = e => {
 
   if(e.target.matches(".down") || e.target.matches(".down *")){
@@ -266,7 +292,6 @@ const channelBtnsEvent = e => {
   }
   checkCartState()
 }
-
 
 const deleteEvent = e => {
   if(e.target.matches(".deleteCart")){
@@ -291,31 +316,52 @@ const changeClase = ()=> {
   $modalCompraContainer.classList.add("showme")
 }
 
-const cancelarSuscripcion = ()=> {
-  removeShowme($modalCompraContainer)
+//******* CONTENIDO DEL MODAL AL  SUSCRIBIRSE *******//
+const renderContentModal = () => {
+  return `
+        <h3 class="modalCompra__title">¿Finalizar tu suscripción?</h3>
+        <div class="modalCompra__btns">
+          <button class="modalCompra__btn modalCompra-cancel">
+            <i class="fa-solid fa-rectangle-xmark" data-value="false"></i>
+          </button>
+          <button class="modalCompra__btn modalCompra-confirm">
+            <i class="fa-solid fa-square-check" data-value="true"></i>
+          </button>
+        </div>
+  `
 }
 
+const showMsjExito = () => {
+  setTimeout(()=>{
+    $modalContent.innerHTML = `<h2>¡Compra realizada con éxito!</h2>`
+  },4000)
+}
+
+const resetContentModal = () => {
+  setTimeout(()=>{
+    $modalContent.innerHTML = renderContentModal()
+  },7000)
+}
 
 const modalBtnEvent = e => {
   const target = e.target.dataset.value;
   if(target === "true"){
+
     $modalContent.innerHTML = `<img src="../imagenes/loader.svg"/ class="loader">`
-
-    setInterval(()=>{
-      $modalContent.innerHTML = `<h2>¡Compra realizada con éxito!</h2>`
-    },2000)
-    
-    setInterval(()=>{
+    showMsjExito()
+    setTimeout(()=>{
       removeShowme($modalCompraContainer)
-    },3000)
-
+    },6000)
+    resetContentModal()
     vaciarCarrito()
     checkCartState()
-  } else if(target === 'false'){
-    cancelarSuscripcion()
+  } 
+  else if(target === 'false'){
+    removeShowme($modalCompraContainer)
+    return;
   }
-}
 
+}
 
 const suscripcionRealizada = e => {
   if(e.target.matches(".suscribeCart")){
@@ -330,6 +376,7 @@ const hiddeOverlay = () =>{
 
 const init = () =>{
     renderCards()
+    renderBtnsCategories()
     $btnCategories.addEventListener("click",renderFilter)
     $btnMore.addEventListener("click",verMasCanales)
     document.addEventListener("click",addChannel)
@@ -337,10 +384,13 @@ const init = () =>{
     document.addEventListener("click",channelBtnsEvent)
     document.addEventListener("click",deleteEvent)
     document.addEventListener("click",suscripcionRealizada)
-    document.addEventListener("click",modalBtnEvent)
-    $overlay.addEventListener("click",hiddeOverlay)
-    window.addEventListener("scroll",hiddeOverlay)
     hideBtnCart($btnSuscribeCart)
     hideBtnCart($btnDeleteCart)
+    document.addEventListener("click",modalBtnEvent)
+    window.addEventListener("scroll",hiddeOverlay)
+    $overlay.addEventListener("click",hiddeOverlay)
+    if(!$modalCompraContainer.classList.contains("showme")){
+      $modalContent.innerHTML = renderContentModal()
+    }
 }
 init()
