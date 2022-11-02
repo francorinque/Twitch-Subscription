@@ -87,6 +87,83 @@ const channels = [
     pais: 'españa',
     price: 1.99
   },
+  {
+    id: 9,
+    img: "../imagenes/rubius.jpg",
+    name: "rubius",
+    followers: "+13M",
+    edad: 32,
+    url: "https://www.twitch.tv/rubius",
+    popular: false,
+    pais: 'españa',
+    price: 1.99
+  },
+  {
+    id: 10,
+    img: "../imagenes/elded.jpg",
+    name: "elded",
+    followers: "+5M",
+    edad: 31,
+    url: "https://www.twitch.tv/elded",
+    popular: false,
+    pais: 'mexico',
+    price: 1.99
+  },
+  {
+    id: 11,
+    img: "../imagenes/arigameplays.png",
+    name: "arigameplays",
+    followers: "+5M",
+    edad: 24,
+    url: "https://www.twitch.tv/arigameplays",
+    popular: false,
+    pais: 'mexico',
+    price: 1.99
+  },
+  {
+    id: 12,
+    img: "../imagenes/thegrefg.png",
+    name: "thegrefg",
+    followers: "+10M",
+    edad: 25,
+    url: "https://www.twitch.tv/thegrefg",
+    popular: false,
+    pais: 'españa',
+    price: 1.99
+  },
+  {
+    id: 13,
+    img: "../imagenes/elmariana.png",
+    name: "elmariana",
+    followers: "+5M",
+    edad: 25,
+    url: "https://www.twitch.tv/elmariana",
+    popular: false,
+    pais: 'mexico',
+    price: 1.99
+  },
+  {
+    id: 14,
+    img: "../imagenes/mymalkapone.png",
+    name: "mym_alkapone",
+    followers: "+1M",
+    edad: 38,
+    url: "https://www.twitch.tv/mym_alkapone",
+    popular: false,
+    pais: 'mexico',
+    price: 1.99
+  },
+  {
+    id: 15,
+    img: "../imagenes/jelty.png",
+    name: "jelty",
+    followers: "+2,9M",
+    edad: 21,
+    url: "https://www.twitch.tv/jelty",
+    popular: false,
+    pais: 'mexico',
+    price: 1.99
+  },
 ];
 
 

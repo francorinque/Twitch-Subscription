@@ -9,14 +9,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="Assets/css/estilos.css"/>
+    <link rel="stylesheet" href="Assets/css/estilos.css" />
     <title>Twitch Subscription</title>
   </head>
   <body>
-
-
-
-    
     <header class="header">
       <nav class="nav">
         <!-- logo -->
@@ -26,9 +22,8 @@
         <!-- menu -->
         <ul class="nav__menu-pc">
           <li><a href="#hero">Inicio</a></li>
-          <li><a href="#canales">Canales</a></li>
           <li><a href="#descargar">Descargar</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#contact">Contacto</a></li>
         </ul>
         <!-- carrito icono -->
         <div class="nav__carrito-container">
@@ -44,9 +39,8 @@
 
       <ul class="nav__menu-mobile">
         <li><a href="#hero">Inicio</a></li>
-        <li><a href="#canales">Canales</a></li>
-        <li><a href="#">Descargar</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#descargar">Descargar</a></li>
+        <li><a href="#contact">Contacto</a></li>
       </ul>
     </div>
     <!-- ?overlay blur -->
@@ -55,8 +49,7 @@
     <div class="cart-container">
       <h2 class="cart__title">CART</h2>
       <!-- channels -->
-      <div class="cart__channels">  
-      </div>
+      <div class="cart__channels"></div>
       <!-- termina channels -->
       <!-- total -->
       <div class="cart__total">
@@ -86,8 +79,7 @@
       </div>
     </div>
 
-
-  <main>
+    <main>
       <section class="container hero" id="hero">
         <!-- content -->
         <div class="hero__content">
@@ -105,19 +97,73 @@
           <button class="btn btn-category active">Todos</button>
         </div>
         <!-- ?cards -->
-        <div class="cards" id="cards">
-          
-        </div>
+        <div class="cards" id="cards"></div>
         <!-- ?ver más -->
         <button class="btn btnMore" id="verMas">
           Ver más
           <i class="fa-solid fa-caret-down"></i>
         </button>
       </section>
-  </main>
+      <!-- ? descargar -->
+      <section class="descargar" id="descargar">
+        <div class="container">
+          <div class="descargar__content">
+            <h2 class="descargar__title">Twitch</h2>
 
+            <div class="descargar__boxes">
+              <div class="descargar__picture"></div>
+              <div class="descargar__box">
+                <span class="bold box-title">
+                  <span>4.4</span>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>5,04 Opiniones</span>
+              </div>
 
-
+              <div class="descargar__box">
+                <span class="bold">100 M+</span>
+                <span>descargas</span>
+              </div>
+            </div>
+          </div>
+          <a
+            class="btn btn-descargar"
+            href="https://play.google.com/store/apps/details?id=tv.twitch.android.app&hl=es_AR&gl=US"
+            target="_blank"
+            >Descargar</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="contact">
+      <h4 class="footer__title">Hecho con 🤍 por Franco Rinque</h4>
+      <div class="footer__contact">
+        <a
+          href="mailto:francoagustinrinquecorreo@gmail.com"
+          class="footer__contact-link"
+          target="_blank"
+          ><i class="fa-regular fa-envelope"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/franco-agustin-rinque"
+          class="footer__contact-link"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin-in"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/codigofar/"
+          class="footer__contact-link"
+          target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          href="https://github.com/francorinque"
+          class="footer__contact-link"
+          target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </div>
+    </footer>
 
     <!-- js -->
     <script src="Assets/js/data.js"></script>
